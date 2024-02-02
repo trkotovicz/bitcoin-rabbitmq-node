@@ -1,19 +1,19 @@
 <template>
   <div id="header">
     <img :src="logo" alt="Bitcoin logo" />
-    <span>Bitcoin Candle Chart</span>
+    <span>Bitcoin Candle App</span>
   </div>
-  
 </template>
 
 <script lang="ts">
 import { Vue } from 'vue-class-component';
-import logo from "../assets/img/logo.png";
-
+import logo from '../assets/img/logo.png';
 
 export default class Header extends Vue {
 
-  get logo() { return logo; }
+  get logo() {
+    return logo;
+  }
 }
 </script>
 
@@ -44,5 +44,4 @@ export default class Header extends Vue {
   margin-left: 20px;
   text-shadow: 2px 2px #333;
 }
-
 </style>

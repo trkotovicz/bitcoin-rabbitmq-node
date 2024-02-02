@@ -21,7 +21,7 @@ const generateCandles = async () => {
 
   if (messageChannel) {
     while(true) {
-      const loopTimes = Period.FIVE_MINUTES / Period.TEN_SECONDS;
+      const loopTimes = Period.TEN_MINUTES / Period.ONE_MINUTE;
       const candle = new Candle('BTC');
   
       log('-----------------------------');
@@ -31,7 +31,7 @@ const generateCandles = async () => {
         const price = await readMarketPrice();
         candle.addValue(price);
         log(`Market price #${i + 1} of ${loopTimes}`);
-        await new Promise(r => setTimeout(r, Period.TEN_SECONDS));
+        await new Promise(r => setTimeout(r, Period.ONE_MINUTE));
       }
   
       candle.closeCandle();

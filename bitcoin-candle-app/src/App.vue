@@ -5,18 +5,22 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import Header from './components/Header.vue';
 import { getModule } from 'vuex-module-decorators';
-import { io } from 'socket.io-client';
-import store from './store';
-import CandleStore from './store/modules/CandleStore';
-import CandleStickChart from './components/CandleStickChart.vue';
-import Candle from './models/Candle';
+import io from 'socket.io-client';
 import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css';
+import CandleStickChart from './components/CandleStickChart.vue';
+import Header from './components/Header.vue';
+import store from './store';
+import CandleStore from './store/modules/CandleStore';
+import Candle from './models/Candle';
+
 
 @Options({
-  components: { Header, CandleStickChart },
+  components: {
+    Header,
+    CandleStickChart
+  },
 })
 export default class App extends Vue {
 
@@ -25,7 +29,7 @@ export default class App extends Vue {
 
   mounted() {
     this.candleStore.loadInitialCandles();
-    
+
     this.socket.on(process.env.VUE_APP_SOCKET_EVENT_NAME, (msg: any) => {
       const candle = new Candle(msg);
       this.candleStore.addCandle(candle);

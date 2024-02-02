@@ -5,14 +5,13 @@
     :options="chartOptions"
     :series="series"
   ></apexchart>
-
 </template>
 
 <script lang="ts">
 
 import { Options, Vue } from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
 import VueApexCharts from 'vue3-apexcharts';
+import { Prop } from 'vue-property-decorator';
 
 @Options({
   components: {
@@ -21,7 +20,7 @@ import VueApexCharts from 'vue3-apexcharts';
 })
 export default class CandleStickChart extends Vue {
   @Prop()
-  candles = []
+  candles = [];
 
   chartOptions = {
     chart: {
@@ -40,10 +39,14 @@ export default class CandleStickChart extends Vue {
         enabled: true
       }
     }
-  }
+  };
 
   get series() {
-    return [{ data: this.candles }];
+    const series = [{
+      data: this.candles
+    }];
+
+    return series;
   }
 }
 </script>
