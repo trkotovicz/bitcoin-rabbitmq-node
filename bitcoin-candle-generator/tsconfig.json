@@ -7,5 +7,7 @@
     "target": "es5",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "outDir": "./build",
+    "rootDir": "./src"
   }
 }
